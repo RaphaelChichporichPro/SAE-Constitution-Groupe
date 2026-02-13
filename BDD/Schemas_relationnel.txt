@@ -1,0 +1,25 @@
+
+
+Role : id_role,nom_role
+Utilisateur: id_user,mail_user,password,#id_role>Role>id_role
+Etudiant : id_user, num_etudiant, mail_univ, Nom_etudiant,Prenom_etudiant,Date_naissance, Type_bac, Redoublant,Genre,Adresse_etudiant, Telephone_etudiant, Apprentissage, #id_groupe>Groupe>id_groupe,#id_promotion>Promotion>id_promotion,#id_user>Utilisateur>id_user
+Participation_covoiturage: #id_user>Etudiant>id_user,#id_covoiturage>Covoiturage>id_covoiturage,Role_participation
+Covoiturage : id_covoiturage, Conducteur,  Point_depart
+Notes : id_notes, Matiere,etiquette, date, valeur,#id_user>Etudiant>id_user
+
+Promotion :id_promotion,Année,Departement,Parcours,#id_user>Utilisateur>id_user
+Critere_promotion: #id_promotion>Promotion>id_promotion, #id_critère>Critere>id_critère
+
+Choix_activite: #id_user>Etudiant>id_user,#id_activite>Activite>id_activite
+Activite : id_activite,libelle_activite,Periode_activite,matiere_optionnelle,Enseignement_anglais,covoiturage
+Groupe : id_groupe, libelle_groupe,Type_groupe,#id_promotion>Promotion>id_promotion,#id_user>Enseignant>id_user
+Critere_groupe: #id_groupe>Groupe>id_groupe, #id_critère>Critere>id_critère
+Critere : id_critère, nom_critere, Active, Type_critère,Objectif_distribution,Valeur_reference,poids_critère
+
+
+
+Enseignant: id_user, matricule_ens, Nom_enseignant, Prenom_enseignant, mail_enseignant, Date_naissance,Status,Specialite,Adresse_Enseignant,Telephone_Enseignant,#id_user>Utilisateur>id_user
+Sondage: id_sondage, Date_creation, libelle_sondage,#id_promotion>Promotion>id_promotion,#id_user>Enseignant>id_user
+Reponse_sondage: #id_user>Etudiant>id_user,#id_sondage>Sondage>id_sondage,date_reponse,valeur_reponse,ordre_preference
+
+

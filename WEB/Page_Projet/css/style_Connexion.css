@@ -1,0 +1,165 @@
+/* ===========================
+   RESET ET BASES
+   =========================== */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;     /* Centre verticalement */
+    background-color: #f4f4f4; /* Petit fond gris */
+}
+
+/* ===========================
+   CONTENEUR PRINCIPAL
+   =========================== */
+.form-container {
+    width: 90%;
+    max-width: 500px;
+    height: auto;
+    background-color: white;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ===========================
+   ELEMENTS VISUELS (Image, Titre)
+   =========================== */
+img {
+    display: block;
+    max-width: 150px;
+    height: auto;
+    margin: 0 auto 20px auto; /* Centré avec espace en bas */
+}
+
+h1 {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* ===========================
+   CHAMPS DE SAISIE (Inputs, Select, Date)
+   =========================== */
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold; /* J'ai gardé le gras du bloc 2 pour plus de lisibilité */
+    color: #333;
+}
+
+/* Style commun pour tous les types de champs */
+input[type="text"],
+input[type="password"],
+input[type="date"],
+select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 1rem;
+}
+
+select {
+    cursor: pointer;
+}
+
+/* Effet Focus (Orange) */
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #FF6600;
+    box-shadow: 0 0 5px rgba(255, 165, 0, 0.3);
+}
+
+/* ===========================
+   BOUTONS
+   =========================== */
+.btn-connexion {
+    display: block;
+    width: 80%;
+    height: 45px; /* J'ai gardé 45px (plus confortable) du bloc 2 */
+    margin: 25px auto 0 auto;
+    background-color: #FF6600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-connexion:hover {
+    background-color: #FF6600; /* Gardé tel quel selon ta demande */
+}
+
+/* ===========================
+   LIENS ET PIEDS DE PAGE
+   =========================== */
+
+/* Lien spécifique "Mot de passe oublié" (Orange) */
+.lien-oubli {
+    display: block;
+    color: #FF6600;
+    text-decoration: none;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}
+
+.lien-oubli:hover {
+    text-decoration: underline;
+}
+
+/* Zone du bas (utilisée pour "Créer un compte" ou "Déjà un compte") */
+.creation-compte, 
+.connexion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid #eee;
+    margin-top: 25px;
+    padding-top: 20px;
+    font-size: 0.9em;
+}
+
+.creation-compte span,
+.connexion span {
+    color: #555;
+}
+
+/* Les liens du bas en Bleu (#1E90FF) */
+.creation-compte a,
+.connexion a {
+    color: #1E90FF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.creation-compte a:hover,
+.connexion a:hover {
+    text-decoration: underline;
+}
+
+/* ===========================
+   UTILITAIRES
+   =========================== */
+.mail-gras-p {
+    font-weight: bold;
+    font-style: italic;
+}

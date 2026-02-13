@@ -1,0 +1,166 @@
+
+
+/* 
+   FONCTION : Moyenne étudiant
+  */
+DROP FUNCTION IF EXISTS moyenne_etudiant;
+DELIMITER $$
+
+CREATE FUNCTION moyenne_etudiant(p_id_user VARCHAR(20))
+RETURNS DECIMAL(5,2)
+DETERMINISTIC
+BEGIN
+    DECLARE moy DECIMAL(5,2);
+
+    SELECT ROUND(AVG(valeur),2)
+    INTO moy
+    FROM Notes
+    WHERE id_user = p_id_user;
+
+    RETURN moy;
+END$$
+
+DELIMITER ;
+
+
+ /* 
+    PROCÉDURE : Ajouter un étudiant à un groupe
+    */
+DROP PROCEDURE IF EXISTS ajouter_etudiant_groupe;
+DELIMITER $$
+
+CREATE PROCEDURE ajouter_etudiant_groupe(
+    IN p_id_user VARCHAR(20),
+    IN p_id_groupe INT
+)
+BEGIN
+    INSERT INTO Groupe_Etudiant (id_user, id_groupe)
+    VALUES (p_id_user, p_id_groupe);
+END$$
+
+DELIMITER ;
+
+
+ /* 
+    PROCÉDURE : Lister les étudiants d’un groupe
+    */
+DROP PROCEDURE IF EXISTS lister_etudiants_groupe;
+DELIMITER $$
+
+CREATE PROCEDURE lister_etudiants_groupe(
+    IN p_id_groupe INT
+)
+BEGIN
+    SELECT e.nom_etudiant, e.prenom_etudiant
+    FROM Etudiant e
+    JOIN Groupe_Etudiant ge ON e.id_user = ge.id_user
+    WHERE ge.id_groupe = p_id_groupe;
+END$$
+
+DELIMITER ;
+
+
+ /*
+    PROCÉDURE : Affectation automatique simple
+    */
+DROP PROCEDURE IF EXISTS affectation_auto;
+DELIMITER $$
+
+CREATE PROCEDURE affectation_auto(
+    IN p_id_groupe INT,
+    IN p_limite INT
+)
+BEGIN
+    INSERT INTO Groupe_Etudiant (id_user, id_groupe)
+    SELECT id_user, p_id_groupe
+    FROM Etudiant
+    WHERE id_user NOT IN (SELECT id_user FROM Groupe_Etudiant)
+    LIMIT p_limite;
+END$$
+
+DELIMITER ;
+
+
+ /*
+    PROCÉDURE : Bilan automatique pédagogique
+    */
+DROP PROCEDURE IF EXISTS proc_bilan_alertes;
+DELIMITER $$
+
+CREATE PROCEDURE proc_bilan_alertes()
+BEGIN
+    -- Étudiants en difficulté
+    SELECT 'ALERTE : ÉTUDIANTS EN DIFFICULTÉ' AS Rapport;
+    SELECT nom_etudiant, prenom_etudiant, moyenne
+    FROM vue_moyenne_etudiant
+    WHERE moyenne < 10;
+
+    -- Groupes presque saturés
+    SELECT 'ALERTE : GROUPES SATURÉS (90%)' AS Rapport;
+    SELECT g.libelle_groupe, v.effectif, g.capacite
+    FROM Groupe g
+    JOIN vue_effectif_groupes v ON g.id_groupe = v.id_groupe
+    WHERE v.effectif >= g.capacite * 0.9;
+
+    -- Activités sans inscrits
+    SELECT 'ALERTE : ACTIVITÉS VIDES' AS Rapport;
+    SELECT a.id_activite, a.libelle_activite
+    FROM Activite a
+    LEFT JOIN Choix_activite ca ON a.id_activite = ca.id_activite
+    WHERE ca.id_activite IS NULL;
+END$$
+
+DELIMITER ;
+
+
+ /* 
+    PROCÉDURE : Affectation de secours
+    (Étudiants isolés)
+  */
+DROP PROCEDURE IF EXISTS proc_affectation_secours;
+DELIMITER $$
+
+CREATE PROCEDURE proc_affectation_secours()
+BEGIN
+    DECLARE v_id_user VARCHAR(20);
+    DECLARE v_id_groupe INT;
+    DECLARE done INT DEFAULT 0;
+
+    DECLARE cur_isoles CURSOR FOR
+        SELECT e.id_user
+        FROM Etudiant e
+        WHERE e.id_user NOT IN (SELECT id_user FROM Groupe_Etudiant)
+          AND e.id_user NOT IN (SELECT id_user FROM Participation_covoiturage);
+
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+
+    OPEN cur_isoles;
+
+    boucle: LOOP
+        FETCH cur_isoles INTO v_id_user;
+        IF done THEN
+            LEAVE boucle;
+        END IF;
+
+        SELECT g.id_groupe
+        INTO v_id_groupe
+        FROM Groupe g
+        JOIN vue_effectif_groupes v ON g.id_groupe = v.id_groupe
+        WHERE g.type_groupe = 'TD'
+          AND v.effectif < g.capacite
+        LIMIT 1;
+
+        IF v_id_groupe IS NOT NULL THEN
+            INSERT INTO Groupe_Etudiant (id_user, id_groupe)
+            VALUES (v_id_user, v_id_groupe);
+        END IF;
+
+        SET v_id_groupe = NULL;
+    END LOOP;
+
+    CLOSE cur_isoles;
+
+    SELECT 'Affectation de secours terminée.' AS Statut;
+END$$
+
+DELIMITER ;

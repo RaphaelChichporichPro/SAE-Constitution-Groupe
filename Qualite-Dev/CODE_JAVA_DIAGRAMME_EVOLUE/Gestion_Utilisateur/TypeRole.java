@@ -1,0 +1,8 @@
+package APP_GESTION_GROUPE.Gestion_Utilisateur;
+
+public enum TypeRole {
+	RESP_FORMATION,
+	RESP_PEDAGOGIQUE,
+	ENSEIGNANT_CLASSIQUE,
+	ETUDIANT
+}

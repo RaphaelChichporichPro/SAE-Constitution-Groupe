@@ -1,0 +1,242 @@
+
+
+-- Vue 1 : Étudiants & Groupes
+DROP VIEW IF EXISTS vue_etudiants_groupes;
+CREATE VIEW vue_etudiants_groupes AS
+SELECT 
+    e.num_etudiant,
+    e.nom_etudiant,
+    e.prenom_etudiant,
+    g.libelle_groupe,
+    g.type_groupe,
+    p.annee,
+    p.parcours
+FROM Etudiant e
+JOIN Groupe_Etudiant ge ON e.id_user = ge.id_user
+JOIN Groupe g ON ge.id_groupe = g.id_groupe
+JOIN Promotion p ON e.id_promotion = p.id_promotion;
+
+
+-- Vue 2 : Effectif par groupe
+DROP VIEW IF EXISTS vue_effectif_groupes;
+CREATE VIEW vue_effectif_groupes AS
+SELECT 
+    g.id_groupe,
+    g.libelle_groupe,
+    g.type_groupe,
+    COUNT(ge.id_user) AS effectif
+FROM Groupe g
+LEFT JOIN Groupe_Etudiant ge ON g.id_groupe = ge.id_groupe
+GROUP BY g.id_groupe, g.libelle_groupe, g.type_groupe;
+
+
+-- Vue 3 : Moyenne des notes par étudiant
+DROP VIEW IF EXISTS vue_moyenne_etudiant;
+CREATE VIEW vue_moyenne_etudiant AS
+SELECT 
+    e.id_user,
+    e.nom_etudiant,
+    e.prenom_etudiant,
+    ROUND(AVG(n.valeur), 1) AS moyenne
+FROM Etudiant e
+JOIN Notes n ON e.id_user = n.id_user
+GROUP BY e.id_user, e.nom_etudiant, e.prenom_etudiant;
+
+
+-- Vue 4 : Participation au covoiturage
+DROP VIEW IF EXISTS vue_covoiturage;
+CREATE VIEW vue_covoiturage AS
+SELECT 
+    e.nom_etudiant,
+    e.prenom_etudiant,
+    c.point_depart,
+    pc.role_participation
+FROM Participation_covoiturage pc
+JOIN Etudiant e ON pc.id_user = e.id_user
+JOIN Covoiturage c ON pc.id_covoiturage = c.id_covoiturage;
+
+
+-- Vue 5 : Réponses aux sondages
+DROP VIEW IF EXISTS vue_reponses_sondage;
+CREATE VIEW vue_reponses_sondage AS
+SELECT 
+    s.libelle_sondage,
+    e.nom_etudiant,
+    e.prenom_etudiant,
+    r.valeur_reponse,
+    r.ordre_preference
+FROM Reponse_sondage r
+JOIN Etudiant e ON r.id_user = e.id_user
+JOIN Sondage s ON r.id_sondage = s.id_sondage;
+
+
+-- Vue 6 : Étudiants par activité
+DROP VIEW IF EXISTS vue_specialites_etudiants;
+CREATE VIEW vue_specialites_etudiants AS
+SELECT 
+    e.nom_etudiant,
+    e.prenom_etudiant,
+    a.libelle_activite,
+    a.matiere_optionnelle
+FROM Etudiant e
+JOIN Choix_activite ca ON e.id_user = ca.id_user
+JOIN Activite a ON ca.id_activite = a.id_activite;
+
+
+-- Vue 7 : Statistiques de covoiturage
+DROP VIEW IF EXISTS vue_statistiques_covoiturage;
+CREATE VIEW vue_statistiques_covoiturage AS
+SELECT 
+    c.point_depart,
+    SUM(CASE WHEN pc.role_participation = 'CONDUCTEUR' THEN 1 ELSE 0 END) AS nb_conducteurs,
+    SUM(CASE WHEN pc.role_participation = 'PASSAGER' THEN 1 ELSE 0 END) AS nb_passagers
+FROM Covoiturage c
+LEFT JOIN Participation_covoiturage pc 
+    ON c.id_covoiturage = pc.id_covoiturage
+GROUP BY c.point_depart;
+
+
+-- Vue 8 : Critères par groupe
+DROP VIEW IF EXISTS vue_criteres_par_groupe;
+CREATE VIEW vue_criteres_par_groupe AS
+SELECT 
+    g.libelle_groupe,
+    c.nom_critere,
+    c.poids_critere,
+    c.objectif_distribution
+FROM Groupe g
+JOIN Critere_groupe cg ON g.id_groupe = cg.id_groupe
+JOIN Critere c ON cg.id_critere = c.id_critere;
+
+
+-- Vue 9 : Profil pédagogique complet
+DROP VIEW IF EXISTS vue_profil_complet;
+CREATE VIEW vue_profil_complet AS
+SELECT 
+    e.id_user,
+    e.nom_etudiant,
+    e.prenom_etudiant,
+    p.parcours,
+    g.libelle_groupe AS groupe_td,
+    ROUND((SELECT AVG(valeur) FROM Notes WHERE id_user = e.id_user), 1) AS moyenne_gen
+FROM Etudiant e
+JOIN Promotion p ON e.id_promotion = p.id_promotion
+LEFT JOIN Groupe_Etudiant ge ON e.id_user = ge.id_user
+LEFT JOIN Groupe g 
+    ON ge.id_groupe = g.id_groupe
+    AND g.type_groupe = 'TD';
+
+
+-- Vue 10 : Logistique transport
+DROP VIEW IF EXISTS vue_logistique_transport;
+CREATE VIEW vue_logistique_transport AS
+SELECT 
+    c.point_depart,
+    COUNT(CASE WHEN pc.role_participation = 'CONDUCTEUR' THEN 1 END) AS nb_conducteurs,
+    COUNT(CASE WHEN pc.role_participation = 'PASSAGER' THEN 1 END) AS nb_passagers,
+    COUNT(pc.id_user) AS total_participants
+FROM Covoiturage c
+LEFT JOIN Participation_covoiturage pc 
+    ON c.id_covoiturage = pc.id_covoiturage
+GROUP BY c.point_depart;
+
+
+/* =======================
+   SECTION 2 : REQUÊTES
+   ======================= */
+
+-- Q1 : Étudiants d’un groupe
+SELECT nom_etudiant, prenom_etudiant
+FROM vue_etudiants_groupes
+WHERE libelle_groupe = 'TD1';
+
+
+-- Q2 : Groupes avec effectif élevé
+SELECT *
+FROM vue_effectif_groupes
+WHERE effectif > 25;
+
+
+-- Q3 : Étudiants sans covoiturage
+SELECT e.nom_etudiant, e.prenom_etudiant
+FROM Etudiant e
+LEFT JOIN Participation_covoiturage pc 
+    ON e.id_user = pc.id_user
+WHERE pc.id_user IS NULL;
+
+
+-- Q4 : Moyenne par groupe
+SELECT 
+    g.libelle_groupe,
+    ROUND(AVG(n.valeur), 1) AS moyenne_groupe
+FROM Groupe g
+JOIN Groupe_Etudiant ge ON g.id_groupe = ge.id_groupe
+JOIN Notes n ON ge.id_user = n.id_user
+GROUP BY g.libelle_groupe;
+
+
+-- Q5 : Étudiants ayant répondu à tous les sondages
+SELECT e.id_user, e.nom_etudiant, e.prenom_etudiant
+FROM Etudiant e
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Sondage s
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM Reponse_sondage r
+        WHERE r.id_sondage = s.id_sondage
+          AND r.id_user = e.id_user
+    )
+);
+
+
+-- Q6 : Étudiants isolés (sans groupe et sans covoiturage)
+SELECT e.nom_etudiant, e.prenom_etudiant
+FROM Etudiant e
+WHERE e.id_user NOT IN (SELECT id_user FROM Groupe_Etudiant)
+  AND e.id_user NOT IN (SELECT id_user FROM Participation_covoiturage);
+
+
+-- Q7 : Comparaison des moyennes entre groupes TD
+SELECT 
+    g.libelle_groupe,
+    ROUND(AVG(n.valeur), 1) AS moyenne_academique
+FROM Groupe g
+JOIN Groupe_Etudiant ge ON g.id_groupe = ge.id_groupe
+JOIN Notes n ON ge.id_user = n.id_user
+WHERE g.type_groupe = 'TD'
+GROUP BY g.libelle_groupe;
+
+
+-- Q8 : Activités les plus populaires
+SELECT 
+    a.libelle_activite,
+    COUNT(ca.id_user) AS nb_inscrits
+FROM Activite a
+LEFT JOIN Choix_activite ca ON a.id_activite = ca.id_activite
+GROUP BY a.libelle_activite
+ORDER BY nb_inscrits DESC;
+
+
+-- Q9 : Étudiants en difficulté (moyenne < 10)
+SELECT nom_etudiant, prenom_etudiant, moyenne
+FROM vue_moyenne_etudiant
+WHERE moyenne < 10;
+
+
+-- Q10 : Vérification de la mixité par groupe TD
+SELECT 
+    g.libelle_groupe,
+    SUM(CASE WHEN e.genre = 'F' THEN 1 ELSE 0 END) AS nb_femmes,
+    SUM(CASE WHEN e.genre = 'H' THEN 1 ELSE 0 END) AS nb_hommes
+FROM Groupe g
+JOIN Groupe_Etudiant ge ON g.id_groupe = ge.id_groupe
+JOIN Etudiant e ON ge.id_user = e.id_user
+WHERE g.type_groupe = 'TD'
+GROUP BY g.libelle_groupe;
+
+
+-- Q11 : Étudiants sans choix d’activité
+SELECT nom_etudiant, prenom_etudiant, mail_univ
+FROM Etudiant
+WHERE id_user NOT IN (SELECT id_user FROM Choix_activite);

@@ -1,0 +1,171 @@
+DROP TABLE IF EXISTS Role;
+CREATE TABLE Role(
+   id_role VARCHAR(50),
+   nom_role VARCHAR(50) NOT NULL,
+   PRIMARY KEY(id_role)
+);
+
+CREATE TABLE Activite(
+   id_activite VARCHAR(50),
+   libelle_activite VARCHAR(50),
+   Periode_activite VARCHAR(50),
+   matiere_optionnelle VARCHAR(50),
+   Enseignement_anglais Boolean,
+   covoiturage Boolean,
+   PRIMARY KEY(id_activite)
+);
+
+CREATE TABLE Covoiturage(
+   id_covoiturage VARCHAR(50),
+   Conducteur VARCHAR(50),
+   Point_depart VARCHAR(50) NOT NULL,
+   PRIMARY KEY(id_covoiturage)
+);
+
+CREATE TABLE Critere(
+   id_critère VARCHAR(50),
+   nom_critere VARCHAR(50) NOT NULL,
+   Active Boolean NOT NULL,
+   Type_critère VARCHAR(50) NOT NULL,
+   Objectif_distribution VARCHAR(50) NOT NULL,
+   Valeur_reference VARCHAR(50) NOT NULL,
+   poids_critère INT NOT NULL,
+   PRIMARY KEY(id_critère)
+);
+
+CREATE TABLE Utilisateur(
+   id_user VARCHAR(50),
+   mail_user VARCHAR(50),
+   password VARCHAR(50) NOT NULL,
+   id_role VARCHAR(50),
+   PRIMARY KEY(id_user),
+   UNIQUE(mail_user),
+   FOREIGN KEY(id_role) REFERENCES Role(id_role)
+);
+
+CREATE TABLE Enseignant(
+   id_user VARCHAR(50),
+   matricule_ens INT NOT NULL,
+   Nom_enseignant VARCHAR(50) NOT NULL,
+   Prenom_enseignant VARCHAR(50) NOT NULL,
+   mail_enseignant VARCHAR(50) NOT NULL,
+   Date_naissance DATE NOT NULL,
+   Status VARCHAR(50) NOT NULL,
+   Specialite VARCHAR(50) NOT NULL,
+   Adresse_Enseignant VARCHAR(50) NOT NULL,
+   Telephone_Enseignant VARCHAR(50) NOT NULL,
+   PRIMARY KEY(id_user),
+   UNIQUE(matricule_ens),
+   UNIQUE(mail_enseignant),
+   FOREIGN KEY(id_user) REFERENCES Utilisateur(id_user)
+);
+
+CREATE TABLE Promotion(
+   id_promotion INT,
+   Année DATE NOT NULL,
+   Departement VARCHAR(50) NOT NULL,
+   Parcours VARCHAR(50),
+   id_user VARCHAR(50),
+   PRIMARY KEY(id_promotion),
+   FOREIGN KEY(id_user) REFERENCES Enseignant(id_user)
+);
+
+CREATE TABLE Groupe(
+   id_groupe INT,
+   libelle_groupe VARCHAR(50) NOT NULL,
+   Type_groupe VARCHAR(50) NOT NULL,
+   id_promotion INT,
+   id_user VARCHAR(50),
+   PRIMARY KEY(id_groupe),
+   FOREIGN KEY(id_promotion) REFERENCES Promotion(id_promotion),
+   FOREIGN KEY(id_user) REFERENCES Enseignant(id_user)
+);
+
+CREATE TABLE Sondage(
+   id_sondage INT,
+   Date_creation DATE,
+   libelle_sondage VARCHAR(50),
+   id_promotion INT NOT NULL,
+   id_user VARCHAR(50),
+   PRIMARY KEY(id_sondage),
+   FOREIGN KEY(id_promotion) REFERENCES Promotion(id_promotion),
+   FOREIGN KEY(id_user) REFERENCES Enseignant(id_user)
+);
+
+CREATE TABLE Etudiant(
+   id_user VARCHAR(50),
+   num_etudiant INT NOT NULL,
+   mail_univ VARCHAR(50) NOT NULL,
+   Nom_etudiant VARCHAR(50) NOT NULL,
+   Prenom_etudiant VARCHAR(50) NOT NULL,
+   Date_naissance DATE,
+   Type_bac VARCHAR(50) NOT NULL,
+   Redoublant Boolean,
+   Genre VARCHAR(50) NOT NULL,
+   Adresse_etudiant VARCHAR(50) NOT NULL,
+   Telephone_etudiant VARCHAR(50) NOT NULL,
+   Apprentissage Boolean,
+   id_groupe INT NOT NULL,
+   id_promotion INT NOT NULL,
+   PRIMARY KEY(id_user),
+   UNIQUE(num_etudiant),
+   UNIQUE(mail_univ),
+   FOREIGN KEY(id_user) REFERENCES Utilisateur(id_user),
+   FOREIGN KEY(id_groupe) REFERENCES Groupe(id_groupe),
+   FOREIGN KEY(id_promotion) REFERENCES Promotion(id_promotion)
+);
+
+CREATE TABLE Notes(
+   id_notes INT,
+   Matière VARCHAR(50) NOT NULL,
+   étiquete VARCHAR(50) NOT NULL,
+   date_ DATE NOT NULL,
+   valeur INT,
+   id_user VARCHAR(50) NOT NULL,
+   PRIMARY KEY(id_notes),
+   FOREIGN KEY(id_user) REFERENCES Etudiant(id_user)
+);
+
+CREATE TABLE Reponse_sondage(
+   id_user VARCHAR(50),
+   id_sondage INT,
+   date_reponse DATE,
+   valeur_reponse VARCHAR(50),
+   Ordre_preference INT,
+   PRIMARY KEY(id_user, id_sondage),
+   FOREIGN KEY(id_user) REFERENCES Etudiant(id_user),
+   FOREIGN KEY(id_sondage) REFERENCES Sondage(id_sondage)
+);
+
+CREATE TABLE Choix_activite(
+   id_user VARCHAR(50),
+   id_activite VARCHAR(50),
+   PRIMARY KEY(id_user, id_activite),
+   FOREIGN KEY(id_user) REFERENCES Etudiant(id_user),
+   FOREIGN KEY(id_activite) REFERENCES Activite(id_activite)
+);
+
+CREATE TABLE Participation_covoiturage(
+   id_user VARCHAR(50),
+   id_covoiturage VARCHAR(50),
+   Role_participation VARCHAR(50),
+   PRIMARY KEY(id_user, id_covoiturage),
+   FOREIGN KEY(id_user) REFERENCES Etudiant(id_user),
+   FOREIGN KEY(id_covoiturage) REFERENCES Covoiturage(id_covoiturage)
+);
+
+CREATE TABLE Critere_promotion(
+   id_promotion INT,
+   id_critère VARCHAR(50),
+   PRIMARY KEY(id_promotion, id_critère),
+   FOREIGN KEY(id_promotion) REFERENCES Promotion(id_promotion),
+   FOREIGN KEY(id_critère) REFERENCES Critere(id_critère)
+);
+
+CREATE TABLE Critere_groupe(
+   id_groupe INT,
+   id_critère VARCHAR(50),
+   PRIMARY KEY(id_groupe, id_critère),
+   FOREIGN KEY(id_groupe) REFERENCES Groupe(id_groupe),
+   FOREIGN KEY(id_critère) REFERENCES Critere(id_critère)
+);

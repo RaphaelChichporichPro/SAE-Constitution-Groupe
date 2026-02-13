@@ -1,0 +1,475 @@
+INSERT INTO Role (id_role, nom_role) VALUES
+('ENS', 'Enseignant'),
+('ETU', 'Etudiant');
+
+
+INSERT INTO Utilisateur (id_user, mail_user, password, id_role) VALUES
+('ENS1','ens1@univ.fr','mdp','ENS'),
+('ENS2','ens2@univ.fr','mdp','ENS'),
+('ENS3','ens3@univ.fr','mdp','ENS'),
+('ENS4','ens4@univ.fr','mdp','ENS'),
+('ENS5','ens5@univ.fr','mdp','ENS'),
+('ENS6','ens6@univ.fr','mdp','ENS'),
+('ENS7','ens7@univ.fr','mdp','ENS'),
+('ENS8','ens8@univ.fr','mdp','ENS'),
+('ENS9','ens9@univ.fr','mdp','ENS'),
+('ENS10','ens10@univ.fr','mdp','ENS'),
+('ENS11','ens11@univ.fr','mdp','ENS'),
+('ENS12','ens12@univ.fr','mdp','ENS'),
+('ENS13','ens13@univ.fr','mdp','ENS'),
+('ENS14','ens14@univ.fr','mdp','ENS'),
+('ENS15','ens15@univ.fr','mdp','ENS'),
+('ENS16','ens16@univ.fr','mdp','ENS'),
+('ENS17','ens17@univ.fr','mdp','ENS'),
+('ENS18','ens18@univ.fr','mdp','ENS'),
+('ENS19','ens19@univ.fr','mdp','ENS'),
+('ENS20','ens20@univ.fr','mdp','ENS');
+
+
+
+
+
+INSERT INTO Enseignant VALUES
+('ENS1',1001,'Dupont','Jean','dupont@univ.fr','1975-01-01','responsable','Info','Lyon','0600000001'),
+('ENS2',1002,'Martin','Claire','martin@univ.fr','1976-01-01','enseignant','Maths','Paris','0600000002'),
+('ENS3',1003,'Durand','Paul','durand@univ.fr','1977-01-01','enseignant','Réseaux','Lille','0600000003'),
+('ENS4',1004,'Bernard','Julie','bernard@univ.fr','1978-01-01','enseignant','BD','Nice','0600000004'),
+('ENS5',1005,'Petit','Luc','petit@univ.fr','1979-01-01','enseignant','Web','Toulouse','0600000005'),
+('ENS6',1006,'Robert','Anne','robert@univ.fr','1980-01-01','enseignant','IA','Lyon','0600000006'),
+('ENS7',1007,'Richard','Marc','richard@univ.fr','1981-01-01','enseignant','Maths','Paris','0600000007'),
+('ENS8',1008,'Moreau','Emma','moreau@univ.fr','1982-01-01','enseignant','Algo','Lille','0600000008'),
+('ENS9',1009,'Simon','Alex','simon@univ.fr','1983-01-01','enseignant','Web','Nice','0600000009'),
+('ENS10',1010,'Laurent','Nina','laurent@univ.fr','1984-01-01','enseignant','Réseaux','Toulouse','0600000010'),
+('ENS11',1011,'Michel','Tom','michel@univ.fr','1985-01-01','enseignant','BD','Lyon','0600000011'),
+('ENS12',1012,'Garcia','Lea','garcia@univ.fr','1986-01-01','enseignant','IA','Paris','0600000012'),
+('ENS13',1013,'David','Hugo','david@univ.fr','1987-01-01','enseignant','Algo','Lille','0600000013'),
+('ENS14',1014,'Roux','Sarah','roux@univ.fr','1988-01-01','enseignant','Maths','Nice','0600000014'),
+('ENS15',1015,'Vincent','Noah','vincent@univ.fr','1989-01-01','enseignant','Web','Toulouse','0600000015'),
+('ENS16',1016,'Fournier','Eva','fournier@univ.fr','1990-01-01','enseignant','Réseaux','Lyon','0600000016'),
+('ENS17',1017,'Morel','Adam','morel@univ.fr','1991-01-01','enseignant','BD','Paris','0600000017'),
+('ENS18',1018,'Girard','Lina','girard@univ.fr','1992-01-01','enseignant','IA','Lille','0600000018'),
+('ENS19',1019,'Andre','Leo','andre@univ.fr','1993-01-01','enseignant','Algo','Nice','0600000019'),
+('ENS20',1020,'Lefevre','Mia','lefevre@univ.fr','1994-01-01','enseignant','Web','Toulouse','0600000020');
+
+INSERT INTO Promotion VALUES (1,2024,'Informatique','BUT2','ENS1');
+INSERT INTO Promotion VALUES (2,2025,'Informatique','BUT2','ENS2');
+INSERT INTO Promotion VALUES (3,2024,'Informatique','BUT3','ENS3');
+
+
+INSERT INTO Utilisateur VALUES
+('ETU1','etu1@etu.fr','mdp','ETU'), ('ETU2','etu2@etu.fr','mdp','ETU'),
+('ETU3','etu3@etu.fr','mdp','ETU'), ('ETU4','etu4@etu.fr','mdp','ETU'),
+('ETU5','etu5@etu.fr','mdp','ETU'), ('ETU6','etu6@etu.fr','mdp','ETU'),
+('ETU7','etu7@etu.fr','mdp','ETU'), ('ETU8','etu8@etu.fr','mdp','ETU'),
+('ETU9','etu9@etu.fr','mdp','ETU'), ('ETU10','etu10@etu.fr','mdp','ETU'),
+('ETU11','etu11@etu.fr','mdp','ETU'), ('ETU12','etu12@etu.fr','mdp','ETU'),
+('ETU13','etu13@etu.fr','mdp','ETU'), ('ETU14','etu14@etu.fr','mdp','ETU'),
+('ETU15','etu15@etu.fr','mdp','ETU'), ('ETU16','etu16@etu.fr','mdp','ETU'),
+('ETU17','etu17@etu.fr','mdp','ETU'), ('ETU18','etu18@etu.fr','mdp','ETU'),
+('ETU19','etu19@etu.fr','mdp','ETU'), ('ETU20','etu20@etu.fr','mdp','ETU'),
+('ETU21','etu21@etu.fr','mdp','ETU'), ('ETU22','etu22@etu.fr','mdp','ETU'),
+('ETU23','etu23@etu.fr','mdp','ETU'), ('ETU24','etu24@etu.fr','mdp','ETU'),
+('ETU25','etu25@etu.fr','mdp','ETU'), ('ETU26','etu26@etu.fr','mdp','ETU'),
+('ETU27','etu27@etu.fr','mdp','ETU'), ('ETU28','etu28@etu.fr','mdp','ETU'),
+('ETU29','etu29@etu.fr','mdp','ETU'), ('ETU30','etu30@etu.fr','mdp','ETU'),
+('ETU31','etu31@etu.fr','mdp','ETU'), ('ETU32','etu32@etu.fr','mdp','ETU'),
+('ETU33','etu33@etu.fr','mdp','ETU'), ('ETU34','etu34@etu.fr','mdp','ETU'),
+('ETU35','etu35@etu.fr','mdp','ETU'), ('ETU36','etu36@etu.fr','mdp','ETU'),
+('ETU37','etu37@etu.fr','mdp','ETU'), ('ETU38','etu38@etu.fr','mdp','ETU'),
+('ETU39','etu39@etu.fr','mdp','ETU'), ('ETU40','etu40@etu.fr','mdp','ETU'),
+('ETU41','etu41@etu.fr','mdp','ETU'), ('ETU42','etu42@etu.fr','mdp','ETU'),
+('ETU43','etu43@etu.fr','mdp','ETU'), ('ETU44','etu44@etu.fr','mdp','ETU'),
+('ETU45','etu45@etu.fr','mdp','ETU'), ('ETU46','etu46@etu.fr','mdp','ETU'),
+('ETU47','etu47@etu.fr','mdp','ETU'), ('ETU48','etu48@etu.fr','mdp','ETU'),
+('ETU49','etu49@etu.fr','mdp','ETU'), ('ETU50','etu50@etu.fr','mdp','ETU');
+
+INSERT INTO Utilisateur VALUES
+('ETU51','etu51@etu.fr','mdp','ETU'), ('ETU52','etu52@etu.fr','mdp','ETU'),
+('ETU53','etu53@etu.fr','mdp','ETU'), ('ETU54','etu54@etu.fr','mdp','ETU'),
+('ETU55','etu55@etu.fr','mdp','ETU'), ('ETU56','etu56@etu.fr','mdp','ETU'),
+('ETU57','etu57@etu.fr','mdp','ETU'), ('ETU58','etu58@etu.fr','mdp','ETU'),
+('ETU59','etu59@etu.fr','mdp','ETU'), ('ETU60','etu60@etu.fr','mdp','ETU'),
+('ETU61','etu61@etu.fr','mdp','ETU'), ('ETU62','etu62@etu.fr','mdp','ETU'),
+('ETU63','etu63@etu.fr','mdp','ETU'), ('ETU64','etu64@etu.fr','mdp','ETU'),
+('ETU65','etu65@etu.fr','mdp','ETU'), ('ETU66','etu66@etu.fr','mdp','ETU'),
+('ETU67','etu67@etu.fr','mdp','ETU'), ('ETU68','etu68@etu.fr','mdp','ETU'),
+('ETU69','etu69@etu.fr','mdp','ETU'), ('ETU70','etu70@etu.fr','mdp','ETU'),
+('ETU71','etu71@etu.fr','mdp','ETU'), ('ETU72','etu72@etu.fr','mdp','ETU'),
+('ETU73','etu73@etu.fr','mdp','ETU'), ('ETU74','etu74@etu.fr','mdp','ETU'),
+('ETU75','etu75@etu.fr','mdp','ETU'), ('ETU76','etu76@etu.fr','mdp','ETU'),
+('ETU77','etu77@etu.fr','mdp','ETU'), ('ETU78','etu78@etu.fr','mdp','ETU'),
+('ETU79','etu79@etu.fr','mdp','ETU'), ('ETU80','etu80@etu.fr','mdp','ETU'),
+('ETU81','etu81@etu.fr','mdp','ETU'), ('ETU82','etu82@etu.fr','mdp','ETU'),
+('ETU83','etu83@etu.fr','mdp','ETU'), ('ETU84','etu84@etu.fr','mdp','ETU'),
+('ETU85','etu85@etu.fr','mdp','ETU'), ('ETU86','etu86@etu.fr','mdp','ETU'),
+('ETU87','etu87@etu.fr','mdp','ETU'), ('ETU88','etu88@etu.fr','mdp','ETU'),
+('ETU89','etu89@etu.fr','mdp','ETU'), ('ETU90','etu90@etu.fr','mdp','ETU'),
+('ETU91','etu91@etu.fr','mdp','ETU'), ('ETU92','etu92@etu.fr','mdp','ETU'),
+('ETU93','etu93@etu.fr','mdp','ETU'), ('ETU94','etu94@etu.fr','mdp','ETU'),
+('ETU95','etu95@etu.fr','mdp','ETU'), ('ETU96','etu96@etu.fr','mdp','ETU'),
+('ETU97','etu97@etu.fr','mdp','ETU'), ('ETU98','etu98@etu.fr','mdp','ETU'),
+('ETU99','etu99@etu.fr','mdp','ETU'), ('ETU100','etu100@etu.fr','mdp','ETU');
+
+
+INSERT INTO Etudiant VALUES
+('ETU1',20001,'etu1@etu.fr','Ali','Yassine','2003-01-01','Général',FALSE,'H','Lyon','0610000001',FALSE,1),
+('ETU2',20002,'etu2@etu.fr','Ben','Sarah','2003-01-02','Techno',FALSE,'F','Paris','0610000002',FALSE,1),
+('ETU3',20003,'etu3@etu.fr','Diallo','Moussa','2003-01-03','Général',FALSE,'H','Lille','0610000003',FALSE,1),
+('ETU4',20004,'etu4@etu.fr','Nguyen','Linh','2003-01-04','Général',FALSE,'F','Nice','0610000004',FALSE,1),
+('ETU5',20005,'etu5@etu.fr','Martin','Lucas','2003-01-05','Techno',FALSE,'H','Toulouse','0610000005',FALSE,1),
+('ETU6',20006,'etu6@etu.fr','Dupont','Emma','2003-01-06','Général',FALSE,'F','Lyon','0610000006',FALSE,1),
+('ETU7',20007,'etu7@etu.fr','Bernard','Hugo','2003-01-07','Général',FALSE,'H','Paris','0610000007',FALSE,1),
+('ETU8',20008,'etu8@etu.fr','Petit','Chloe','2003-01-08','Techno',FALSE,'F','Lille','0610000008',FALSE,1),
+('ETU9',20009,'etu9@etu.fr','Robert','Nolan','2003-01-09','Général',FALSE,'H','Nice','0610000009',FALSE,1),
+('ETU10',20010,'etu10@etu.fr','Moreau','Lea','2003-01-10','Général',FALSE,'F','Toulouse','0610000010',FALSE,1),
+
+('ETU11',20011,'etu11@etu.fr','Fournier','Alex','2003-02-01','Général',FALSE,'H','Lyon','0610000011',FALSE,1),
+('ETU12',20012,'etu12@etu.fr','Girard','Ines','2003-02-02','Techno',FALSE,'F','Paris','0610000012',FALSE,1),
+('ETU13',20013,'etu13@etu.fr','Andre','Rayan','2003-02-03','Général',FALSE,'H','Lille','0610000013',FALSE,1),
+('ETU14',20014,'etu14@etu.fr','Lefevre','Manon','2003-02-04','Général',FALSE,'F','Nice','0610000014',FALSE,1),
+('ETU15',20015,'etu15@etu.fr','Mercier','Theo','2003-02-05','Techno',FALSE,'H','Toulouse','0610000015',FALSE,1),
+('ETU16',20016,'etu16@etu.fr','Blanc','Julie','2003-02-06','Général',FALSE,'F','Lyon','0610000016',FALSE,1),
+('ETU17',20017,'etu17@etu.fr','Gauthier','Adam','2003-02-07','Général',FALSE,'H','Paris','0610000017',FALSE,1),
+('ETU18',20018,'etu18@etu.fr','Perrin','Nora','2003-02-08','Techno',FALSE,'F','Lille','0610000018',FALSE,1),
+('ETU19',20019,'etu19@etu.fr','Roux','Mehdi','2003-02-09','Général',FALSE,'H','Nice','0610000019',FALSE,1),
+('ETU20',20020,'etu20@etu.fr','Colin','Eva','2003-02-10','Général',FALSE,'F','Toulouse','0610000020',FALSE,1),
+
+('ETU21',20021,'etu21@etu.fr','Faure','Ilyes','2003-03-01','Techno',FALSE,'H','Lyon','0610000021',FALSE,1),
+('ETU22',20022,'etu22@etu.fr','Muller','Camille','2003-03-02','Général',FALSE,'F','Paris','0610000022',FALSE,1),
+('ETU23',20023,'etu23@etu.fr','Lopez','Anis','2003-03-03','Général',FALSE,'H','Lille','0610000023',FALSE,1),
+('ETU24',20024,'etu24@etu.fr','Gomez','Sofia','2003-03-04','Techno',FALSE,'F','Nice','0610000024',FALSE,1),
+('ETU25',20025,'etu25@etu.fr','Henry','Liam','2003-03-05','Général',FALSE,'H','Toulouse','0610000025',FALSE,1),
+
+('ETU26',20026,'etu26@etu.fr','Leroy','Amina','2003-03-06','Général',FALSE,'F','Lyon','0610000026',FALSE,1),
+('ETU27',20027,'etu27@etu.fr','Robin','Noe','2003-03-07','Techno',FALSE,'H','Paris','0610000027',FALSE,1),
+('ETU28',20028,'etu28@etu.fr','Boyer','Salma','2003-03-08','Général',FALSE,'F','Lille','0610000028',FALSE,1),
+('ETU29',20029,'etu29@etu.fr','Texier','Omar','2003-03-09','Général',FALSE,'H','Nice','0610000029',FALSE,1),
+('ETU30',20030,'etu30@etu.fr','Caron','Lina','2003-03-10','Techno',FALSE,'F','Toulouse','0610000030',FALSE,1),
+
+('ETU31',20031,'etu31@etu.fr','Perrot','Amir','2003-04-01','Général',FALSE,'H','Lyon','0610000031',FALSE,1),
+('ETU32',20032,'etu32@etu.fr','Leclerc','Aya','2003-04-02','Techno',FALSE,'F','Paris','0610000032',FALSE,1),
+('ETU33',20033,'etu33@etu.fr','Chevalier','Ismail','2003-04-03','Général',FALSE,'H','Lille','0610000033',FALSE,1),
+('ETU34',20034,'etu34@etu.fr','Arnaud','Yasmine','2003-04-04','Général',FALSE,'F','Nice','0610000034',FALSE,1),
+('ETU35',20035,'etu35@etu.fr','Benoit','Rachid','2003-04-05','Techno',FALSE,'H','Toulouse','0610000035',FALSE,1),
+
+('ETU36',20036,'etu36@etu.fr','Guillot','Maya','2003-04-06','Général',FALSE,'F','Lyon','0610000036',FALSE,1),
+('ETU37',20037,'etu37@etu.fr','Masson','Yanis','2003-04-07','Techno',FALSE,'H','Paris','0610000037',FALSE,1),
+('ETU38',20038,'etu38@etu.fr','Picard','Nina','2003-04-08','Général',FALSE,'F','Lille','0610000038',FALSE,1),
+('ETU39',20039,'etu39@etu.fr','Bailly','Adel','2003-04-09','Général',FALSE,'H','Nice','0610000039',FALSE,1),
+('ETU40',20040,'etu40@etu.fr','Hoarau','Sara','2003-04-10','Techno',FALSE,'F','Toulouse','0610000040',FALSE,1),
+
+('ETU41',20041,'etu41@etu.fr','Renaud','Bilal','2003-05-01','Général',FALSE,'H','Lyon','0610000041',FALSE,1),
+('ETU42',20042,'etu42@etu.fr','Cousin','Yara','2003-05-02','Techno',FALSE,'F','Paris','0610000042',FALSE,1),
+('ETU43',20043,'etu43@etu.fr','Gaillard','Nassim','2003-05-03','Général',FALSE,'H','Lille','0610000043',FALSE,1),
+('ETU44',20044,'etu44@etu.fr','Millet','Jade','2003-05-04','Général',FALSE,'F','Nice','0610000044',FALSE,1),
+('ETU45',20045,'etu45@etu.fr','Aubert','Hamza','2003-05-05','Techno',FALSE,'H','Toulouse','0610000045',FALSE,1),
+
+('ETU46',20046,'etu46@etu.fr','Rolland','Meriem','2003-05-06','Général',FALSE,'F','Lyon','0610000046',FALSE,1),
+('ETU47',20047,'etu47@etu.fr','Legrand','Ibrahim','2003-05-07','Général',FALSE,'H','Paris','0610000047',FALSE,1),
+('ETU48',20048,'etu48@etu.fr','Lemoine','Aya','2003-05-08','Techno',FALSE,'F','Lille','0610000048',FALSE,1),
+('ETU49',20049,'etu49@etu.fr','Poirier','Sami','2003-05-09','Général',FALSE,'H','Nice','0610000049',FALSE,1),
+('ETU50',20050,'etu50@etu.fr','Marchand','Louna','2003-05-10','Général',FALSE,'F','Toulouse','0610000050',FALSE,1);
+
+INSERT INTO Etudiant VALUES
+('ETU51',20051,'etu51@etu.fr','Delattre','Youssef','2003-06-01','Général',FALSE,'H','Lyon','0610000051',FALSE,1),
+('ETU52',20052,'etu52@etu.fr','Brun','Meryem','2003-06-02','Techno',FALSE,'F','Paris','0610000052',FALSE,1),
+('ETU53',20053,'etu53@etu.fr','Lacroix','Nabil','2003-06-03','Général',FALSE,'H','Lille','0610000053',FALSE,1),
+('ETU54',20054,'etu54@etu.fr','Pascal','Aya','2003-06-04','Général',FALSE,'F','Nice','0610000054',FALSE,1),
+('ETU55',20055,'etu55@etu.fr','Boulanger','Ilan','2003-06-05','Techno',FALSE,'H','Toulouse','0610000055',FALSE,1),
+
+('ETU56',20056,'etu56@etu.fr','Cordier','Rania','2003-06-06','Général',FALSE,'F','Lyon','0610000056',FALSE,1),
+('ETU57',20057,'etu57@etu.fr','Giraud','Mehdi','2003-06-07','Général',FALSE,'H','Paris','0610000057',FALSE,1),
+('ETU58',20058,'etu58@etu.fr','Lemaire','Imane','2003-06-08','Techno',FALSE,'F','Lille','0610000058',FALSE,1),
+('ETU59',20059,'etu59@etu.fr','Barbier','Oussama','2003-06-09','Général',FALSE,'H','Nice','0610000059',FALSE,1),
+('ETU60',20060,'etu60@etu.fr','Ribeiro','Maya','2003-06-10','Techno',FALSE,'F','Toulouse','0610000060',FALSE,1),
+
+('ETU61',20061,'etu61@etu.fr','Gaudin','Karim','2003-07-01','Général',FALSE,'H','Lyon','0610000061',FALSE,1),
+('ETU62',20062,'etu62@etu.fr','Renard','Inaya','2003-07-02','Techno',FALSE,'F','Paris','0610000062',FALSE,1),
+('ETU63',20063,'etu63@etu.fr','Monnier','Sofiane','2003-07-03','Général',FALSE,'H','Lille','0610000063',FALSE,1),
+('ETU64',20064,'etu64@etu.fr','Aubry','Nour','2003-07-04','Général',FALSE,'F','Nice','0610000064',FALSE,1),
+('ETU65',20065,'etu65@etu.fr','Ramos','Yanis','2003-07-05','Techno',FALSE,'H','Toulouse','0610000065',FALSE,1),
+
+('ETU66',20066,'etu66@etu.fr','Rey','Lyna','2003-07-06','Général',FALSE,'F','Lyon','0610000066',FALSE,1),
+('ETU67',20067,'etu67@etu.fr','Schmitt','Anas','2003-07-07','Techno',FALSE,'H','Paris','0610000067',FALSE,1),
+('ETU68',20068,'etu68@etu.fr','Klein','Salma','2003-07-08','Général',FALSE,'F','Lille','0610000068',FALSE,1),
+('ETU69',20069,'etu69@etu.fr','Noel','Ismail','2003-07-09','Général',FALSE,'H','Nice','0610000069',FALSE,1),
+('ETU70',20070,'etu70@etu.fr','Blanchard','Asma','2003-07-10','Techno',FALSE,'F','Toulouse','0610000070',FALSE,1),
+
+('ETU71',20071,'etu71@etu.fr','Perin','Hamid','2003-08-01','Général',FALSE,'H','Lyon','0610000071',FALSE,1),
+('ETU72',20072,'etu72@etu.fr','Marechal','Jihane','2003-08-02','Techno',FALSE,'F','Paris','0610000072',FALSE,1),
+('ETU73',20073,'etu73@etu.fr','Pelletier','Sami','2003-08-03','Général',FALSE,'H','Lille','0610000073',FALSE,1),
+('ETU74',20074,'etu74@etu.fr','Carlier','Mouna','2003-08-04','Général',FALSE,'F','Nice','0610000074',FALSE,1),
+('ETU75',20075,'etu75@etu.fr','Leger','Ibrahim','2003-08-05','Techno',FALSE,'H','Toulouse','0610000075',FALSE,1),
+
+('ETU76',20076,'etu76@etu.fr','Collet','Nadia','2003-08-06','Général',FALSE,'F','Lyon','0610000076',FALSE,1),
+('ETU77',20077,'etu77@etu.fr','Bouchet','Walid','2003-08-07','Techno',FALSE,'H','Paris','0610000077',FALSE,1),
+('ETU78',20078,'etu78@etu.fr','Lejeune','Maha','2003-08-08','Général',FALSE,'F','Lille','0610000078',FALSE,1),
+('ETU79',20079,'etu79@etu.fr','Navarro','Ayoub','2003-08-09','Général',FALSE,'H','Nice','0610000079',FALSE,1),
+('ETU80',20080,'etu80@etu.fr','Moreno','Sana','2003-08-10','Techno',FALSE,'F','Toulouse','0610000080',FALSE,1),
+
+('ETU81',20081,'etu81@etu.fr','Pichon','Zayd','2003-09-01','Général',FALSE,'H','Lyon','0610000081',FALSE,1),
+('ETU82',20082,'etu82@etu.fr','Duval','Ikram','2003-09-02','Techno',FALSE,'F','Paris','0610000082',FALSE,1),
+('ETU83',20083,'etu83@etu.fr','Prevost','Rami','2003-09-03','Général',FALSE,'H','Lille','0610000083',FALSE,1),
+('ETU84',20084,'etu84@etu.fr','Basset','Lila','2003-09-04','Général',FALSE,'F','Nice','0610000084',FALSE,1),
+('ETU85',20085,'etu85@etu.fr','Chauvin','Samy','2003-09-05','Techno',FALSE,'H','Toulouse','0610000085',FALSE,1),
+
+('ETU86',20086,'etu86@etu.fr','Marin','Hajar','2003-09-06','Général',FALSE,'F','Lyon','0610000086',FALSE,1),
+('ETU87',20087,'etu87@etu.fr','Renaudin','Fares','2003-09-07','Techno',FALSE,'H','Paris','0610000087',FALSE,1),
+('ETU88',20088,'etu88@etu.fr','Bonnin','Siham','2003-09-08','Général',FALSE,'F','Lille','0610000088',FALSE,1),
+('ETU89',20089,'etu89@etu.fr','Lucas','Yacine','2003-09-09','Général',FALSE,'H','Nice','0610000089',FALSE,1),
+('ETU90',20090,'etu90@etu.fr','Martinez','Meryam','2003-09-10','Techno',FALSE,'F','Toulouse','0610000090',FALSE,1),
+
+('ETU91',20091,'etu91@etu.fr','Gaume','Khalil','2003-10-01','Général',FALSE,'H','Lyon','0610000091',FALSE,1),
+('ETU92',20092,'etu92@etu.fr','Valentin','Lamia','2003-10-02','Techno',FALSE,'F','Paris','0610000092',FALSE,1),
+('ETU93',20093,'etu93@etu.fr','Olivier','Aymen','2003-10-03','Général',FALSE,'H','Lille','0610000093',FALSE,1),
+('ETU94',20094,'etu94@etu.fr','Jourdan','Meriem','2003-10-04','Général',FALSE,'F','Nice','0610000094',FALSE,1),
+('ETU95',20095,'etu95@etu.fr','Briere','Nassim','2003-10-05','Techno',FALSE,'H','Toulouse','0610000095',FALSE,1),
+
+('ETU96',20096,'etu96@etu.fr','Chiron','Sana','2003-10-06','Général',FALSE,'F','Lyon','0610000096',FALSE,1),
+('ETU97',20097,'etu97@etu.fr','Parent','Imran','2003-10-07','Techno',FALSE,'H','Paris','0610000097',FALSE,1),
+('ETU98',20098,'etu98@etu.fr','Gillet','Amal','2003-10-08','Général',FALSE,'F','Lille','0610000098',FALSE,1),
+('ETU99',20099,'etu99@etu.fr','Bodin','Younes','2003-10-09','Général',FALSE,'H','Nice','0610000099',FALSE,1),
+('ETU100',20100,'etu100@etu.fr','Serre','Kenza','2003-10-10','Techno',FALSE,'F','Toulouse','0610000100',FALSE,1);
+
+
+INSERT INTO Groupe VALUES
+(1,'TD1','TD',30,1,'ENS1'), (2,'TD2','TD',30,1,'ENS2'),
+(3,'TD3','TD',30,1,'ENS3'), (4,'TD4','TD',30,1,'ENS4'),
+(5,'TD5','TD',30,1,'ENS5'), (6,'TP1','TP',15,1,'ENS6'),
+(7,'TP2','TP',15,1,'ENS7'), (8,'TP3','TP',15,1,'ENS8'),
+(9,'TP4','TP',15,1,'ENS9'), (10,'TP5','TP',15,1,'ENS10'),
+(11,'TD6','TD',30,1,'ENS11'), (12,'TD7','TD',30,1,'ENS12'),
+(13,'TD8','TD',30,1,'ENS13'), (14,'TD9','TD',30,1,'ENS14'),
+(15,'TD10','TD',30,1,'ENS15'), (16,'TP6','TP',15,1,'ENS16'),
+(17,'TP7','TP',15,1,'ENS17'), (18,'TP8','TP',15,1,'ENS18'),
+(19,'TP9','TP',15,1,'ENS19'), (20,'TP10','TP',15,1,'ENS20');
+
+
+INSERT INTO Groupe_Etudiant VALUES
+('ETU1',1), ('ETU2',1), ('ETU3',1), ('ETU4',1), ('ETU5',1),
+('ETU6',2), ('ETU7',2), ('ETU8',2), ('ETU9',2), ('ETU10',2),
+('ETU11',3), ('ETU12',3), ('ETU13',3), ('ETU14',3), ('ETU15',3),
+('ETU16',4), ('ETU17',4), ('ETU18',4), ('ETU19',4), ('ETU20',4),
+('ETU21',5), ('ETU22',5), ('ETU23',5), ('ETU24',5), ('ETU25',5),
+('ETU26',6), ('ETU27',6), ('ETU28',6), ('ETU29',6), ('ETU30',6),
+('ETU31',7), ('ETU32',7), ('ETU33',7), ('ETU34',7), ('ETU35',7),
+('ETU36',8), ('ETU37',8), ('ETU38',8), ('ETU39',8), ('ETU40',8),
+('ETU41',9), ('ETU42',9), ('ETU43',9), ('ETU44',9), ('ETU45',9),
+('ETU46',10), ('ETU47',10), ('ETU48',10), ('ETU49',10), ('ETU50',10);
+
+INSERT INTO Groupe_Etudiant VALUES
+('ETU51',11), ('ETU52',11), ('ETU53',11), ('ETU54',11), ('ETU55',11),
+('ETU56',12), ('ETU57',12), ('ETU58',12), ('ETU59',12), ('ETU60',12),
+('ETU61',13), ('ETU62',13), ('ETU63',13), ('ETU64',13), ('ETU65',13),
+('ETU66',14), ('ETU67',14), ('ETU68',14), ('ETU69',14), ('ETU70',14),
+('ETU71',15), ('ETU72',15), ('ETU73',15), ('ETU74',15), ('ETU75',15),
+('ETU76',16), ('ETU77',16), ('ETU78',16), ('ETU79',16), ('ETU80',16),
+('ETU81',17), ('ETU82',17), ('ETU83',17), ('ETU84',17), ('ETU85',17),
+('ETU86',18), ('ETU87',18), ('ETU88',18), ('ETU89',18), ('ETU90',18),
+('ETU91',19), ('ETU92',19), ('ETU93',19), ('ETU94',19), ('ETU95',19),
+('ETU96',20), ('ETU97',20), ('ETU98',20), ('ETU99',20), ('ETU100',20);
+
+
+
+INSERT INTO Critere VALUES
+('C1','Moyenne générale',TRUE,'NUMERIQUE','Equilibrer','12',5),
+('C2','Genre',TRUE,'CATEGORIEL','Mixité','H/F',3),
+('C3','Redoublant',TRUE,'BOOLEEN','Répartition','FALSE',4),
+('C4','Apprentissage',TRUE,'BOOLEEN','Équilibrer','TRUE',4),
+('C5','Bac',TRUE,'CATEGORIEL','Diversité','Général',2),
+('C6','Age',FALSE,'NUMERIQUE','Homogène','20',1),
+('C7','Adresse',FALSE,'TEXTE','Proximité','Ville',1),
+('C8','Note Algo',TRUE,'NUMERIQUE','Equilibrer','12',5),
+('C9','Note BD',TRUE,'NUMERIQUE','Equilibrer','12',5),
+('C10','Note Web',TRUE,'NUMERIQUE','Equilibrer','12',5),
+('C11','Anglais',FALSE,'NUMERIQUE','Homogène','10',1),
+('C12','Réseaux',TRUE,'NUMERIQUE','Equilibrer','11',4),
+('C13','Maths',TRUE,'NUMERIQUE','Equilibrer','10',4),
+('C14','IA',FALSE,'NUMERIQUE','Homogène','11',2),
+('C15','Algo Avancé',TRUE,'NUMERIQUE','Equilibrer','12',5),
+('C16','Mobilité',FALSE,'BOOLEEN','Répartition','TRUE',1),
+('C17','Sondage choix',TRUE,'ORDINAL','Priorité','1',3),
+('C18','Préférence groupe',TRUE,'ORDINAL','Respect','1',3),
+('C19','Spécialité',FALSE,'CATEGORIEL','Diversité','Info',2),
+('C20','Participation',FALSE,'NUMERIQUE','Homogène','5',1);
+
+
+INSERT INTO Covoiturage VALUES
+('COV1','Lyon'), ('COV2','Paris'), ('COV3','Marseille'), ('COV4','Lille'),
+('COV5','Toulouse'), ('COV6','Nice'), ('COV7','Nantes'), ('COV8','Rennes'),
+('COV9','Bordeaux'), ('COV10','Montpellier'), ('COV11','Grenoble'),
+('COV12','Dijon'), ('COV13','Clermont'), ('COV14','Annecy'),
+('COV15','Chambéry'), ('COV16','Valence'), ('COV17','Avignon'),
+('COV18','Perpignan'), ('COV19','Aix'), ('COV20','Cannes');
+
+
+INSERT INTO Participation_covoiturage VALUES
+('ETU1','COV1','CONDUCTEUR'), ('ETU2','COV1','PASSAGER'),
+('ETU3','COV2','CONDUCTEUR'), ('ETU4','COV2','PASSAGER'),
+('ETU5','COV3','CONDUCTEUR'), ('ETU6','COV3','PASSAGER'),
+('ETU7','COV4','CONDUCTEUR'), ('ETU8','COV4','PASSAGER'),
+('ETU9','COV5','CONDUCTEUR'), ('ETU10','COV5','PASSAGER'),
+('ETU11','COV6','CONDUCTEUR'), ('ETU12','COV6','PASSAGER'),
+('ETU13','COV7','CONDUCTEUR'), ('ETU14','COV7','PASSAGER'),
+('ETU15','COV8','CONDUCTEUR'), ('ETU16','COV8','PASSAGER'),
+('ETU17','COV9','CONDUCTEUR'), ('ETU18','COV9','PASSAGER'),
+('ETU19','COV10','CONDUCTEUR'), ('ETU20','COV10','PASSAGER'),
+('ETU21','COV11','CONDUCTEUR'), ('ETU22','COV11','PASSAGER'),
+('ETU23','COV12','CONDUCTEUR'), ('ETU24','COV12','PASSAGER'),
+('ETU25','COV13','CONDUCTEUR'), ('ETU26','COV13','PASSAGER'),
+('ETU27','COV14','CONDUCTEUR'), ('ETU28','COV14','PASSAGER'),
+('ETU29','COV15','CONDUCTEUR'), ('ETU30','COV15','PASSAGER'),
+('ETU31','COV16','CONDUCTEUR'), ('ETU32','COV16','PASSAGER'),
+('ETU33','COV17','CONDUCTEUR'), ('ETU34','COV17','PASSAGER'),
+('ETU35','COV18','CONDUCTEUR'), ('ETU36','COV18','PASSAGER'),
+('ETU37','COV19','CONDUCTEUR'), ('ETU38','COV19','PASSAGER'),
+('ETU39','COV20','CONDUCTEUR'), ('ETU40','COV20','PASSAGER');
+
+INSERT INTO Sondage VALUES
+(1,'Choix de groupe','2024-09-01',1,'ENS1'),
+(2,'Préférences TP','2024-09-02',1,'ENS2'),
+(3,'Covoiturage','2024-09-03',1,'ENS3'),
+(4,'Options','2024-09-04',1,'ENS4'),
+(5,'Anglais','2024-09-05',1,'ENS5'),
+(6,'Projet','2024-09-06',1,'ENS6'),
+(7,'Mobilité','2024-09-07',1,'ENS7'),
+(8,'Disponibilités','2024-09-08',1,'ENS8'),
+(9,'Préférences horaires','2024-09-09',1,'ENS9'),
+(10,'Outils','2024-09-10',1,'ENS10'),
+(11,'Langages','2024-09-11',1,'ENS11'),
+(12,'Frameworks','2024-09-12',1,'ENS12'),
+(13,'BD','2024-09-13',1,'ENS13'),
+(14,'Web','2024-09-14',1,'ENS14'),
+(15,'Algo','2024-09-15',1,'ENS15'),
+(16,'IA','2024-09-16',1,'ENS16'),
+(17,'Réseaux','2024-09-17',1,'ENS17'),
+(18,'Maths','2024-09-18',1,'ENS18'),
+(19,'Projet tutoré','2024-09-19',1,'ENS19'),
+(20,'Stage','2024-09-20',1,'ENS20');
+
+INSERT INTO Sondage VALUES
+(140, 'Choix de projet', '2024-09-01', 1, 'ENS1'),
+(200, 'Préférences TD', '2024-09-02', 1, 'ENS1'),
+(323, 'Covoiturage', '2024-09-03', 1, 'ENS1');
+
+
+
+INSERT INTO Reponse_sondage VALUES
+('ETU1',1,'2024-09-02','Groupe 1',1),
+('ETU2',1,'2024-09-02','Groupe 2',2),
+('ETU3',2,'2024-09-03','TP matin',1),
+('ETU4',2,'2024-09-03','TP après-midi',2),
+('ETU5',3,'2024-09-04','Oui',1),
+('ETU6',3,'2024-09-04','Non',2),
+('ETU7',4,'2024-09-05','Option A',1),
+('ETU8',4,'2024-09-05','Option B',2),
+('ETU9',5,'2024-09-06','Oui',1),
+('ETU10',5,'2024-09-06','Non',2),
+('ETU11',6,'2024-09-07','Projet A',1),
+('ETU12',6,'2024-09-07','Projet B',2),
+('ETU13',7,'2024-09-08','Oui',1),
+('ETU14',7,'2024-09-08','Non',2),
+('ETU15',8,'2024-09-09','Matin',1),
+('ETU16',8,'2024-09-09','Après-midi',2),
+('ETU17',9,'2024-09-10','Matin',1),
+('ETU18',9,'2024-09-10','Après-midi',2),
+('ETU19',10,'2024-09-11','Oui',1),
+('ETU20',10,'2024-09-11','Non',2),
+('ETU21',11,'2024-09-12','Java',1),
+('ETU22',11,'2024-09-12','Python',2),
+('ETU23',12,'2024-09-13','React',1),
+('ETU24',12,'2024-09-13','Angular',2),
+('ETU25',13,'2024-09-14','MySQL',1),
+('ETU26',13,'2024-09-14','Postgres',2),
+('ETU27',14,'2024-09-15','Oui',1),
+('ETU28',14,'2024-09-15','Non',2),
+('ETU29',15,'2024-09-16','Facile',1),
+('ETU30',15,'2024-09-16','Difficile',2),
+('ETU31',16,'2024-09-17','Oui',1),
+('ETU32',16,'2024-09-17','Non',2),
+('ETU33',17,'2024-09-18','Oui',1),
+('ETU34',17,'2024-09-18','Non',2),
+('ETU35',18,'2024-09-19','Oui',1),
+('ETU36',18,'2024-09-19','Non',2),
+('ETU37',19,'2024-09-20','Oui',1),
+('ETU38',19,'2024-09-20','Non',2),
+('ETU39',20,'2024-09-21','Oui',1),
+('ETU40',20,'2024-09-21','Non',2);
+
+ INSERT INTO Reponse_sondage VALUES
+-- ETU1
+('ETU45', 1, '2024-09-05', 'Projet A', 1),
+('ETU45', 2, '2024-09-05', 'TD1', 1),
+('ETU45', 3, '2024-09-05', 'Oui', 1),
+
+-- ETU2
+('ETU65', 1, '2024-09-05', 'Projet B', 1),
+('ETU65', 2, '2024-09-05', 'TD2', 1),
+('ETU65', 3, '2024-09-05', 'Non', 1),
+
+-- ETU3
+('ETU75', 1, '2024-09-05', 'Projet A', 2),
+('ETU75', 2, '2024-09-05', 'TD1', 2),
+('ETU75', 3, '2024-09-05', 'Oui', 2);
+
+
+
+INSERT INTO Notes VALUES
+(1,'Algo',14,'2024-06-01','ETU1'), (2,'Algo',10,'2024-06-01','ETU2'),
+(3,'BD',15,'2024-06-02','ETU3'), (4,'BD',11,'2024-06-02','ETU4'),
+(5,'Web',13,'2024-06-03','ETU5'), (6,'Web',9,'2024-06-03','ETU6'),
+(7,'Maths',12,'2024-06-04','ETU7'), (8,'Maths',8,'2024-06-04','ETU8'),
+(9,'IA',16,'2024-06-05','ETU9'), (10,'IA',14,'2024-06-05','ETU10'),
+(11,'Réseaux',11,'2024-06-06','ETU11'), (12,'Réseaux',10,'2024-06-06','ETU12'),
+(13,'Algo',17,'2024-06-07','ETU13'), (14,'Algo',9,'2024-06-07','ETU14'),
+(15,'BD',14,'2024-06-08','ETU15'), (16,'BD',12,'2024-06-08','ETU16'),
+(17,'Web',15,'2024-06-09','ETU17'), (18,'Web',11,'2024-06-09','ETU18'),
+(19,'Maths',13,'2024-06-10','ETU19'), (20,'Maths',10,'2024-06-10','ETU20');
+
+
+INSERT INTO Activite VALUES
+('ACT1','Projet informatique','S1','Web',FALSE,FALSE),
+('ACT2','TP Base de données','S1','BD',FALSE,FALSE),
+('ACT3','TD Algorithmique','S1','Algo',FALSE,FALSE),
+('ACT4','Anglais renforcé','S1',NULL,TRUE,FALSE),
+('ACT5','Projet tutoré','S2','Général',FALSE,FALSE),
+('ACT6','TP Réseaux','S2','Réseaux',FALSE,FALSE),
+('ACT7','TD Mathématiques','S1','Maths',FALSE,FALSE),
+('ACT8','IA initiation','S2','IA',FALSE,FALSE),
+('ACT9','Développement mobile','S2','Mobile',FALSE,FALSE),
+('ACT10','Sécurité informatique','S2','Sécurité',FALSE,FALSE),
+('ACT11','Atelier CV','S1',NULL,FALSE,FALSE),
+('ACT12','Simulation entreprise','S2',NULL,FALSE,FALSE),
+('ACT13','Cours Linux','S1','Système',FALSE,FALSE),
+('ACT14','Projet web avancé','S2','Web',FALSE,FALSE),
+('ACT15','TP Python','S1','Python',FALSE,FALSE),
+('ACT16','Anglais professionnel','S2',NULL,TRUE,FALSE),
+('ACT17','Initiation cloud','S2','Cloud',FALSE,FALSE),
+('ACT18','Workshop agile','S1',NULL,FALSE,FALSE),
+('ACT19','Sortie entreprise','S2',NULL,FALSE,TRUE),
+('ACT20','Hackathon','S2','Projet',FALSE,TRUE);
+
+INSERT INTO Choix_activite VALUES
+('ETU1','ACT1'), ('ETU1','ACT9'),
+('ETU2','ACT2'), ('ETU2','ACT10'),
+('ETU3','ACT3'), ('ETU3','ACT11'),
+('ETU4','ACT4'), ('ETU4','ACT12'),
+('ETU5','ACT5'), ('ETU5','ACT13'),
+('ETU6','ACT6'), ('ETU6','ACT14'),
+('ETU7','ACT7'), ('ETU7','ACT15'),
+('ETU8','ACT8'), ('ETU8','ACT16'),
+('ETU9','ACT9'), ('ETU10','ACT10'),
+('ETU11','ACT11'), ('ETU12','ACT12');
+
+
+INSERT INTO Critere_promotion VALUES
+(1,'C1'),(1,'C2'),(1,'C3'),(1,'C4'),(1,'C5'),
+(1,'C8'),(1,'C9'),(1,'C10'),(1,'C12'),(1,'C13');
+
+
+INSERT INTO Critere_groupe VALUES
+(1,'C1'),(1,'C8'),(1,'C9'),
+(2,'C1'),(2,'C10'),
+(3,'C2'),(3,'C3'),
+(4,'C4'),(4,'C5'),
+(5,'C12'),(5,'C13');

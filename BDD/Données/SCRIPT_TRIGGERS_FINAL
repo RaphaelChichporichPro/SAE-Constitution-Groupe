@@ -1,0 +1,70 @@
+-- Trigger 1 — Capacité maximale d’un groupe ---
+
+DROP TRIGGER IF EXISTS trg_capacite_groupe;
+DELIMITER $$
+
+CREATE TRIGGER trg_capacite_groupe
+BEFORE INSERT ON Groupe_Etudiant
+FOR EACH ROW
+BEGIN
+    DECLARE nb INT;
+    DECLARE cap INT;
+
+    SELECT COUNT(*) INTO nb
+    FROM Groupe_Etudiant
+    WHERE id_groupe = NEW.id_groupe;
+
+    SELECT capacite INTO cap
+    FROM Groupe
+    WHERE id_groupe = NEW.id_groupe;
+
+    IF nb >= cap THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Capacité du groupe atteinte';
+    END IF;
+END$$
+
+DELIMITER ;
+
+-- Trigger 2 — Note entre 0 et 20 ---
+
+DROP TRIGGER IF EXISTS trg_note_valide;
+DELIMITER $$
+
+CREATE TRIGGER trg_note_valide
+BEFORE INSERT ON Notes
+FOR EACH ROW
+BEGIN
+    IF NEW.valeur < 0 OR NEW.valeur > 20 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'La note doit être comprise entre 0 et 20';
+    END IF;
+END$$
+
+DELIMITER ;
+
+-- Trigger 3 — Un seul conducteur par covoiturage ---------
+
+DROP TRIGGER IF EXISTS trg_conducteur_unique;
+DELIMITER $$
+
+CREATE TRIGGER trg_conducteur_unique
+BEFORE INSERT ON Participation_covoiturage
+FOR EACH ROW
+BEGIN
+    DECLARE nb INT;
+
+    IF NEW.role_participation = 'CONDUCTEUR' THEN
+        SELECT COUNT(*) INTO nb
+        FROM Participation_covoiturage
+        WHERE id_covoiturage = NEW.id_covoiturage
+          AND role_participation = 'CONDUCTEUR';
+
+        IF nb >= 1 THEN
+            SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Un seul conducteur autorisé par covoiturage';
+        END IF;
+    END IF;
+END$$
+
+DELIMITER ;

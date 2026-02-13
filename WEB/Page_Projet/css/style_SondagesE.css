@@ -1,0 +1,415 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+h1{
+    text-align: center;
+    margin: 0;
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+h2{
+    text-align: center;
+    margin: 0;
+    font-size: 1rem;
+    color: #6b7280;
+    font-weight: 400;
+}
+
+/* Barre horizontale en haut */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 400px;
+  right: 0;
+  height: 80px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.search-box {
+  margin-left: auto;
+  margin-right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.search-box label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.search-box input {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  width: 250px;
+  outline: none;
+}
+
+.search-box input:focus {
+  border-color: rgb(0, 153, 255);
+  box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.1);
+}
+
+/* Logo IUT en bas à droite */
+.logo-iut {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  width: 150px;
+  height: auto;
+}
+
+/* Barre latérale */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;       /* ajuste la largeur */
+  height: 100vh;      /* toute la hauteur visible */
+  background: #ffffff;
+  color: #1f2937;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 16px;
+  padding-bottom: 32px;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+}
+
+/* Profil dans la barre latérale */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.profile-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.student-name,
+.student-year {
+  margin: 0;
+}
+
+.student-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.student-year {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* Boutons */
+.sidebar .item {
+  display: block;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  background: rgb(0, 153, 255);
+  color: white;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.sidebar .item:hover {
+  background: #1d4ed8;
+}
+
+.sidebar .item.active {
+  font-weight: 700;
+  color: #000000;
+  background: rgb(0, 153, 255);
+}
+
+.sidebar .disconnect {
+  margin-top: auto;
+  margin-bottom: 80px;
+}
+
+/* Contenu principal décalé */
+.content {
+  margin-left: 400px;
+  margin-top: 80px;
+  padding: 24px;
+}
+.content h2 {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+/* Tableau des étudiants */
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.student-table thead {
+  background: #f3f4f6;
+}
+
+.student-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.student-table td {
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: #1f2937;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.student-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* Deux tableaux côte à côte */
+.tables-row {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.table-section {
+  flex: 1;
+}
+
+.table-section h3 {
+  font-size: 1.1rem;
+  margin: 0 0 12px 0;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.small-table-container {
+  background: white;
+  padding: 0;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.small-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.small-table td {
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: #1f2937;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.small-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.small-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* Tableau des sondages */
+.surveys-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.surveys-table thead {
+  background: #f3f4f6;
+}
+
+.surveys-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.surveys-table td {
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: #1f2937;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.surveys-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* Statut */
+.status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status.open {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status.closed {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Lien d'action */
+.action-link {
+  color: #0099ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.action-link:hover {
+  text-decoration: underline;
+}
+
+/* Détail du sondage */
+.survey-detail {
+  margin-top: 40px;
+  background: #f9fafb;
+  padding: 32px;
+  border-radius: 8px;
+}
+
+.survey-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+  color: #1f2937;
+}
+
+/* Onglets */
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 32px;
+}
+
+.tab {
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-size: 0.95rem;
+  color: #6b7280;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.tab.active {
+  color: #1f2937;
+  border-bottom-color: #0099ff;
+  font-weight: 600;
+}
+
+.tab:hover {
+  color: #1f2937;
+}
+
+/* Container de question */
+.question-container {
+  background: white;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.question-text {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 32px 0;
+}
+
+/* Section de vote */
+.vote-section {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.vote-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+.vote-icon {
+  font-size: 1.5rem;
+}
+
+/* Grille de choix */
+.choices-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.choice-btn {
+  padding: 16px 24px;
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  border-radius: 24px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.choice-btn:hover {
+  background: #a7f3d0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
